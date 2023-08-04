@@ -22,10 +22,11 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ${{ env.IMG_NAME }}
+          flavor: |
+            latest=true
           tags: |
-            type=raw,value={{sha}},enable=${{ github.ref_type != 'tag' }}
-            type=schedule,pattern={{date 'YYYYMMDD'}}
-            type=ref,event=tag
+            type=raw,value={{date 'YYYYMMDDHHMMSS'}}
+            type=sha
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
