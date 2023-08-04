@@ -1,4 +1,4 @@
-![DockerHub CI](https://github.com/github/docs/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/pseudorandomized/pod-debugger/actions/workflows/ci.yml/badge.svg)
 
 # Description
 A docker image with multiple linux network tools and aws cli pre-installed, for troubleshooting and testing purposes. 
