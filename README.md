@@ -1,3 +1,5 @@
+![DockerHub CI](https://github.com/github/docs/actions/workflows/ci.yml/badge.svg)
+
 # Description
 A docker image with multiple linux network tools and aws cli pre-installed, for troubleshooting and testing purposes. 
 The image is as slim as possible (<100 MB), and you can deploy it to docker daemon, or Kubernetes.
