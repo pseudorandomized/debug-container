@@ -41,7 +41,4 @@ RUN apk upgrade \
 
 EXPOSE 80 443
 
-RUN echo 'echo "welcome to the container"' > /etc/profile.d/welcome.sh
-
-
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
