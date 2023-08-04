@@ -21,7 +21,7 @@ RUN apk upgrade \
     aws-cli \
     envsubst \
     coreutils \
-    nfs-common \
+    nfs-utils \
     curl \
     iperf \
     iproute2 \

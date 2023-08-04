@@ -1,0 +1,40 @@
+name: Docker build and push CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build & push
+    runs-on: ubuntu-latest
+
+    env:
+      IMG_NAME: ${{ github.repository }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Docker metadata
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.IMG_NAME }}
+          tags: |
+            type=raw,value={{sha}},enable=${{ github.ref_type != 'tag' }}
+            type=schedule,pattern={{date 'YYYYMMDD'}}
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
